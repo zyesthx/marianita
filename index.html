@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mariana 🍓</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#ffd6e8, #ffeef6);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', cursive;
+  }
+
+  /* TEXTO ANIMADO */
+  h1 {
+    font-size: 80px;
+    color: #ff4d88;
+    animation: latido 1.5s infinite;
+    z-index: 2;
+  }
+
+  @keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  /* COSAS FLOTANDO */
+  .float {
+    position: absolute;
+    animation: flotar linear infinite;
+    opacity: 0.9;
+  }
+
+  @keyframes flotar {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-120vh); }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Mariana 🍓</h1>
+
+<script>
+  const imagenes = [
+    "https://i.pinimg.com/564x/8a/2f/62/8a2f62b6c6f5b6b5a0e5c7a44b9d9d6c.jpg", // Hello Kitty
+    "https://i.pinimg.com/564x/0f/7a/89/0f7a896e9c1a6e6e2e0e6d6d2a6d4b9e.jpg", // Corazón
+    "https://i.pinimg.com/564x/3a/1b/8c/3a1b8c3c7c9a6c7b1f0b4e6c2a8c9f3e.jpg"  // Gerbera
+  ];
+
+  function crearFlotante() {
+    const img = document.createElement("img");
+    img.src = imagenes[Math.floor(Math.random() * imagenes.length)];
+    img.className = "float";
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.width = Math.random() * 60 + 40 + "px";
+    img.style.animationDuration = Math.random() * 6 + 6 + "s";
+    document.body.appendChild(img);
+
+    setTimeout(() => img.remove(), 12000);
+  }
+
+  setInterval(crearFlotante, 600);
+</script>
+
+</body>
+</html>
